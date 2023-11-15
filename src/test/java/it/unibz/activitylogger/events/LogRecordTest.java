@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,13 +59,64 @@ class LogRecordTest {
     }
 
     @Nested
+    class ExtractsFromNoteEvent {
+        private static Event generateNoteEvent(String eventType, Long timestamp, String noteId, String authorId) {
+            return new EventBuilder()
+                    .anInstanceOf("note")
+                    .haveBeen(eventType)
+                    .at(timestamp)
+                    .withTheAttribute("noteId", noteId, "String")
+                    .and().withTheAttribute("authorId", authorId, "String")
+                    .build();
+        }
+
+        private String eventType;
+        private Long timestamp;
+        private String noteId;
+        private String authorId;
+        private LogRecord record;
+
+        @BeforeEach
+        void setup() {
+            // given
+            eventType = "written";
+            timestamp = 19384L;
+            noteId = "4321-dcba";
+            authorId = "1234-abcd";
+            Event event = ExtractsFromNoteEvent.generateNoteEvent(eventType, timestamp, noteId, authorId);
+
+            // when
+            record = LogRecord.extract(event);
+        }
+
+        @Test
+        void isNotNull() {
+            assertNotNull(record);
+        }
+
+        @Test
+        void isInstanceOfUserLogRecord() {
+            assertInstanceOf(NoteLogRecord.class, record);
+        }
+
+        @Test
+        void isCorrectNoteLogRecord() {
+            NoteLogRecord noteRecord = (NoteLogRecord) record;
+            assertEquals(noteId, noteRecord.noteId);
+            assertEquals(authorId, noteRecord.authorId);
+            assertEquals(eventType, noteRecord.action);
+            assertEquals(timestamp, noteRecord.timestamp);
+        }
+    }
+
+    @Nested
     class ExtractsFromUnknownEvent {
-        private static String firstAttributeName = "something";
-        private static Object firstAttributeValue = new Object();
-        private static String firstAttributeType = "Object";
-        private static String secondAttributeName = "other";
-        private static Object secondAttributeValue = 123;
-        private static String secondAttributeType = "Integer";
+        private static final String firstAttributeName = "something";
+        private static final Object firstAttributeValue = new Object();
+        private static final String firstAttributeType = "Object";
+        private static final String secondAttributeName = "other";
+        private static final Object secondAttributeValue = 123;
+        private static final String secondAttributeType = "Integer";
 
         private static Event generateUnknownEvent(String eventType, Long timestamp) {
             return new EventBuilder()

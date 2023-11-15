@@ -6,6 +6,11 @@ public abstract class LogRecord {
             case UserLogRecord.SOURCE_TYPE_NAME -> {
                 return UserLogRecord.extract(event);
             }
+
+            case NoteLogRecord.SOURCE_TYPE_NAME -> {
+                return NoteLogRecord.extract(event);
+            }
+
             default -> {
                 return GenericLogRecord.extract(event);
             }

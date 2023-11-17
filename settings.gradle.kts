@@ -1,2 +1,3 @@
-rootProject.name = "activitylogger"
+rootProject.name = "it.unibz.activitylogger"
 
+include("core")

@@ -12,7 +12,7 @@ public abstract class InferenceContext {
     }
 
     private final Input input;
-    private EditableLogRecord logRecord;
+    private final EditableLogRecord logRecord;
 
     protected InferenceContext(Input input, EditableLogRecord logRecord) {
         this.input = input;
@@ -25,5 +25,13 @@ public abstract class InferenceContext {
 
     public EditableLogRecord getLogRecord() {
         return this.logRecord;
+    }
+
+    @Override
+    public String toString() {
+        return "InferenceContext{" +
+                "input=" + input +
+                ", logRecord=" + logRecord +
+                '}';
     }
 }

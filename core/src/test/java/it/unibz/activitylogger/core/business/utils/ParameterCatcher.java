@@ -1,9 +1,9 @@
 package it.unibz.activitylogger.core.business.utils;
 
 import it.unibz.activitylogger.core.api.LogRecord;
-import it.unibz.activitylogger.core.business.LogRecordRepository;
+import it.unibz.activitylogger.core.business.LogRecordSaver;
 
-public class ParameterCatcher implements LogRecordRepository {
+public class ParameterCatcher implements LogRecordSaver {
     private LogRecord given = null;
 
     @Override

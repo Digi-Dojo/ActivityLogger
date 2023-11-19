@@ -11,22 +11,25 @@ public class ActivityLoggerHttp {
     private static final Logger logger =
             LoggerFactory.getLogger(ActivityLoggerHttp.class);
 
-    private static void log(Context ctx) {
+    private static void logBody(Context ctx) {
         ActivityLoggerHttp.logger.info(ctx.body());
+    }
+
+    private static void logResponse(Context ctx) {
+        ActivityLoggerHttp.logger.info(ctx.result());
     }
 
     public static void main(String[] args) {
 
         Javalin server = Javalin.create();
 
-        server.before(ActivityLoggerHttp::log);
+        server.before(ActivityLoggerHttp::logBody);
+        server.after(ActivityLoggerHttp::logResponse);
 
         server.post("/input", ctx -> {
             Input input = ctx.bodyAsClass(Input.class);
 
-            logger.info(String.valueOf(input.body()));
-
-            ActivityLogger.run(input);
+            ActivityLogger.process(input);
         });
 
         server.start(8080);

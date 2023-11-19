@@ -16,15 +16,17 @@ public class ActionFromHttpVerb extends BaseInferrer {
         EditableLogRecord logRecord = context.getLogRecord();
 
         String action = mapActionFromVerb(input);
-
         logRecord.setAction(action);
+
+        safeCallNext(context);
     }
 
     private String mapActionFromVerb(Input input) {
-        return switch (input.method()) {
-            case Input.METHOD_POST -> ACTION_CREATED;
-            case Input.METHOD_GET -> ACTION_READ;
-            case Input.METHOD_PUT -> ACTION_UPDATED;
+        return switch (input.method().toLowerCase()) {
+            case Input.METHOD_POST  -> ACTION_CREATED;
+            case Input.METHOD_GET   -> ACTION_READ;
+            case Input.METHOD_PUT   -> ACTION_UPDATED;
+
             default -> ACTION_UNKNOWN;
         };
     }

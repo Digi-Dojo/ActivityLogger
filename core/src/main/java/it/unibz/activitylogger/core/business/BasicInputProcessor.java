@@ -8,11 +8,11 @@ import it.unibz.activitylogger.core.business.inferrer.InferrerLoader;
 
 public class BasicInputProcessor implements InputProcessor {
     private final InferrerLoader inferrerLoader;
-    private final LogRecordRepository logRecordRepository;
+    private final LogRecordSaver logRecordSaver;
 
-    public BasicInputProcessor(InferrerLoader inferrerLoader, LogRecordRepository logRecordRepository) {
+    public BasicInputProcessor(InferrerLoader inferrerLoader, LogRecordSaver logRecordSaver) {
         this.inferrerLoader = inferrerLoader;
-        this.logRecordRepository = logRecordRepository;
+        this.logRecordSaver = logRecordSaver;
     }
 
     @Override
@@ -20,6 +20,6 @@ public class BasicInputProcessor implements InputProcessor {
         InferenceContext context = InferenceContext.createFrom(input);
         Inferrer chain = inferrerLoader.getChain();
         chain.infer(context);
-        this.logRecordRepository.save(context.getLogRecord());
+        this.logRecordSaver.save(context.getLogRecord());
     }
 }

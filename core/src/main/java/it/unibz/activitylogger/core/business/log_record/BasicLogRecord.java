@@ -80,4 +80,16 @@ public class BasicLogRecord implements EditableLogRecord {
     public Object getSemiStructuredData() {
         return Map.copyOf(this.semiStructuredData);
     }
+
+    @Override
+    public String toString() {
+        return "BasicLogRecord{" +
+                "contextName='" + contextName + '\'' +
+                ", contextId='" + contextId + '\'' +
+                ", entityName='" + entityName + '\'' +
+                ", entityId='" + entityId + '\'' +
+                ", action='" + action + '\'' +
+                ", semiStructuredData=" + semiStructuredData +
+                '}';
+    }
 }

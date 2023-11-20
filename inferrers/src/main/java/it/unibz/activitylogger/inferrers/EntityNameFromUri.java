@@ -1,21 +1,13 @@
 package it.unibz.activitylogger.inferrers;
 
 import it.unibz.activitylogger.core.api.InferenceContext;
-import it.unibz.activitylogger.core.api.Inferrer;
 import it.unibz.activitylogger.core.api.Input;
 import it.unibz.activitylogger.core.api.EditableLogRecord;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class EntityNameFromUri implements Inferrer {
-    private Inferrer next;
-
-    @Override
-    public void setNext(Inferrer inferrer) {
-        this.next = inferrer;
-    }
-
+public class EntityNameFromUri extends BaseInferrer {
     @Override
     public void infer(InferenceContext context) {
         Input input = context.readInput();
@@ -30,7 +22,6 @@ public class EntityNameFromUri implements Inferrer {
         System.out.println("Inferrer: EntityNameFromUri");
         System.out.println(logRecord);
 
-        if (this.next != null)
-            this.next.infer(context);
+        safeCallNext(context);
     }
 }

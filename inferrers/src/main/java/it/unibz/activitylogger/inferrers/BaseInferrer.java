@@ -1,4 +1,4 @@
-package it.unibz.activitylogger.core.business.inferrer;
+package it.unibz.activitylogger.inferrers;
 
 import it.unibz.activitylogger.core.api.Inferrer;
 import it.unibz.activitylogger.core.api.InferenceContext;

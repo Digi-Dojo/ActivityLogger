@@ -25,6 +25,7 @@ public class AutomaticInferrerLoader implements InferrerLoader {
         while (iterator.hasNext()) {
             Inferrer inferrer = iterator.next();
             inferrers.add(inferrer);
+            System.out.println("loaded " + inferrer.getClass().getSimpleName());
         }
 
         return inferrers;

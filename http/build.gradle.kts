@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(mapOf("path" to ":inferrers")))
 
     implementation("io.javalin:javalin:$javalin_version")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jackson_version")

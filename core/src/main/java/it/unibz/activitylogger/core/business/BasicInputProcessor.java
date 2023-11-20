@@ -2,8 +2,8 @@ package it.unibz.activitylogger.core.business;
 
 import it.unibz.activitylogger.core.api.Input;
 import it.unibz.activitylogger.core.api.InputProcessor;
-import it.unibz.activitylogger.core.business.inference_context.InferenceContext;
-import it.unibz.activitylogger.core.business.inferrer.Inferrer;
+import it.unibz.activitylogger.core.api.InferenceContext;
+import it.unibz.activitylogger.core.api.Inferrer;
 import it.unibz.activitylogger.core.business.inferrer.InferrerLoader;
 
 public class BasicInputProcessor implements InputProcessor {

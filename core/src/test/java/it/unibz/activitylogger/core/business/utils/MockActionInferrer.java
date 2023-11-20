@@ -1,6 +1,6 @@
 package it.unibz.activitylogger.core.business.utils;
 
-import it.unibz.activitylogger.core.business.inference_context.InferenceContext;
+import it.unibz.activitylogger.core.api.InferenceContext;
 import it.unibz.activitylogger.core.business.inferrer.BaseInferrer;
 
 public class MockActionInferrer extends BaseInferrer {

@@ -2,9 +2,8 @@ package it.unibz.activitylogger.core.business.inferrer;
 
 import it.unibz.activitylogger.core.api.Input;
 import it.unibz.activitylogger.core.api.LogRecord;
-import it.unibz.activitylogger.core.business.inference_context.InferenceContext;
-import it.unibz.activitylogger.core.business.inferrer.ActionFromHttpVerb;
-import it.unibz.activitylogger.core.business.inferrer.Inferrer;
+import it.unibz.activitylogger.core.api.InferenceContext;
+import it.unibz.activitylogger.core.api.Inferrer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

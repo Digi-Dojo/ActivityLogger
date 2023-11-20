@@ -1,6 +1,7 @@
 package it.unibz.activitylogger.core.business.inferrer;
 
-import it.unibz.activitylogger.core.business.inference_context.InferenceContext;
+import it.unibz.activitylogger.core.api.Inferrer;
+import it.unibz.activitylogger.core.api.InferenceContext;
 
 public abstract class BaseInferrer implements Inferrer {
     protected Inferrer next;

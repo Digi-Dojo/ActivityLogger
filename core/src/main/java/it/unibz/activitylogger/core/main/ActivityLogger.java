@@ -15,7 +15,7 @@ public class ActivityLogger {
     }
 
     public static void process(Input input) {
-        InferrerLoader loader = new ManualLoader();
+        InferrerLoader loader = new AutomaticInferrerLoader();
         LogRecordSaver repository = getRepository();
 
         InputProcessor processor = new BasicInputProcessor(loader, repository);

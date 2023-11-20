@@ -1,6 +1,5 @@
-package it.unibz.activitylogger.core.business.inference_context;
+package it.unibz.activitylogger.core.api;
 
-import it.unibz.activitylogger.core.api.Input;
 import it.unibz.activitylogger.core.business.log_record.BasicLogRecord;
 import it.unibz.activitylogger.core.business.log_record.EditableLogRecord;
 

@@ -1,12 +1,14 @@
 package it.unibz.activitylogger.core.main;
 
-import it.unibz.activitylogger.core.business.inferrer.ActionFromHttpVerb;
 import it.unibz.activitylogger.core.api.Inferrer;
 import it.unibz.activitylogger.core.business.inferrer.InferrerLoader;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ServiceLoader;
 
-public class ManualLoader implements InferrerLoader {
+public class AutomaticInferrerLoader implements InferrerLoader {
     @Override
     public Inferrer getChain() {
         List<Inferrer> inferrers = loadAll();
@@ -16,9 +18,16 @@ public class ManualLoader implements InferrerLoader {
     }
 
     private List<Inferrer> loadAll() {
-        return List.of(
-                new ActionFromHttpVerb()
-        );
+        ServiceLoader<Inferrer> inferrerLoader = ServiceLoader.load(Inferrer.class);
+
+        List<Inferrer> inferrers = new ArrayList<>();
+        Iterator<Inferrer> iterator = inferrerLoader.iterator();
+        while (iterator.hasNext()) {
+            Inferrer inferrer = iterator.next();
+            inferrers.add(inferrer);
+        }
+
+        return inferrers;
     }
 
     private void link(List<Inferrer> inferrers) {

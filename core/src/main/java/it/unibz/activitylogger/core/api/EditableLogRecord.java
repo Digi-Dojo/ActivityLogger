@@ -1,6 +1,5 @@
-package it.unibz.activitylogger.core.business.log_record;
+package it.unibz.activitylogger.core.api;
 
-import it.unibz.activitylogger.core.api.LogRecord;
 
 public interface EditableLogRecord extends LogRecord {
     void setContextName(String name);

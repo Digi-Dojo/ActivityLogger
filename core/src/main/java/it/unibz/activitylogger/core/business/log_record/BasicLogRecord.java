@@ -1,5 +1,7 @@
 package it.unibz.activitylogger.core.business.log_record;
 
+import it.unibz.activitylogger.core.api.EditableLogRecord;
+
 import java.util.HashMap;
 import java.util.Map;
 

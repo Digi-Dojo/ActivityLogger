@@ -2,7 +2,7 @@ package it.unibz.activitylogger.core.business.inferrer;
 
 import it.unibz.activitylogger.core.api.Input;
 import it.unibz.activitylogger.core.api.InferenceContext;
-import it.unibz.activitylogger.core.business.log_record.EditableLogRecord;
+import it.unibz.activitylogger.core.api.EditableLogRecord;
 
 public class ActionFromHttpVerb extends BaseInferrer {
     public static final String ACTION_CREATED = "created";

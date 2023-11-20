@@ -1,7 +1,6 @@
 package it.unibz.activitylogger.core.api;
 
 import it.unibz.activitylogger.core.business.log_record.BasicLogRecord;
-import it.unibz.activitylogger.core.business.log_record.EditableLogRecord;
 
 public abstract class InferenceContext {
     public static InferenceContext createFrom(Input input) {

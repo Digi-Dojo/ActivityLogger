@@ -29,8 +29,8 @@ public class PersistableLogRecord implements Identifiable, LogRecord {
     }
 
     @Override
-    public String getEntityName() {
-        return wrapped.getEntityName();
+    public String getEntityTypeName() {
+        return wrapped.getEntityTypeName();
     }
 
     @Override

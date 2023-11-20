@@ -62,7 +62,7 @@ public class BasicLogRecord implements EditableLogRecord {
     }
 
     @Override
-    public String getEntityName() {
+    public String getEntityTypeName() {
         return this.entityName;
     }
 

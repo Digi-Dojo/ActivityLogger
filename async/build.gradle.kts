@@ -8,6 +8,10 @@ plugins {
 group = "it.unibz.activitylogger.async"
 version = "1.0-SNAPSHOT"
 
+java {
+    modularity.inferModulePath = true
+}
+
 repositories {
     mavenCentral()
 }

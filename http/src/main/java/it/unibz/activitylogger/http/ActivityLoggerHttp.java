@@ -3,28 +3,28 @@ package it.unibz.activitylogger.http;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import it.unibz.activitylogger.core.api.Input;
+import it.unibz.activitylogger.core.api.Port;
 import it.unibz.activitylogger.core.main.ActivityLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ActivityLoggerHttp {
-    private static final Logger logger =
-            LoggerFactory.getLogger(ActivityLoggerHttp.class);
+public class ActivityLoggerHttp implements Port {
+    private final Logger logger = LoggerFactory.getLogger(ActivityLoggerHttp.class);
 
-    private static void logBody(Context ctx) {
-        ActivityLoggerHttp.logger.info(ctx.body());
+    private void logBody(Context ctx) {
+        logger.info(ctx.body());
     }
 
-    private static void logResponse(Context ctx) {
-        ActivityLoggerHttp.logger.info(ctx.result());
+    private void logResponse(Context ctx) {
+        logger.info(ctx.result());
     }
 
-    public static void main(String[] args) {
-
+    @Override
+    public void run() {
         Javalin server = Javalin.create();
 
-        server.before(ActivityLoggerHttp::logBody);
-        server.after(ActivityLoggerHttp::logResponse);
+        server.before(this::logBody);
+        server.after(this::logResponse);
 
         server.post("/input", ctx -> {
             Input input = ctx.bodyAsClass(Input.class);

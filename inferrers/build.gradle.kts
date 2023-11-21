@@ -9,6 +9,10 @@ repositories {
     mavenCentral()
 }
 
+java {
+    modularity.inferModulePath = true
+}
+
 dependencies {
     implementation(project(mapOf("path" to ":core")))
     testImplementation(platform("org.junit:junit-bom:5.9.1"))

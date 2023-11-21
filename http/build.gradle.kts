@@ -9,6 +9,10 @@ plugins {
 group = "it.unibz.activitylogger.http"
 version = "1.0-SNAPSHOT"
 
+java {
+    modularity.inferModulePath = true
+}
+
 repositories {
     mavenCentral()
 }

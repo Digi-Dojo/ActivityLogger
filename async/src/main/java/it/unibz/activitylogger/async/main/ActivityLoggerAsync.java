@@ -9,13 +9,15 @@ import org.slf4j.LoggerFactory;
 import it.unibz.activitylogger.async.api.Publisher;
 import it.unibz.activitylogger.async.infrastructure.RabbitMqConfigurer;
 
+import java.util.Properties;
+
 public class ActivityLoggerAsync implements Port {
     @Override
-    public void run() {
+    public void run(Properties config) {
         Logger logger = LoggerFactory.getLogger(ActivityLoggerAsync.class);
 
-        String host = "localhost";
-        String topicName = "input";
+        String host = config.getProperty("activitylogger.async.rabbitmq_host");
+        String topicName = config.getProperty("activitylogger.async.topic_name");
         String routingKey = topicName;
 
         InputConsumer inputConsumer = new InputConsumer(new InputParser());

@@ -24,4 +24,11 @@ dependencies {
     implementation(project(mapOf("path" to ":inferrers")))
     implementation(project(mapOf("path" to ":http")))
     implementation(project(mapOf("path" to ":async")))
+
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

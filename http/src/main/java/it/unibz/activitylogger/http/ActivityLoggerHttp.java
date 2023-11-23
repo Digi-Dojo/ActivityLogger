@@ -8,6 +8,8 @@ import it.unibz.activitylogger.core.main.ActivityLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Properties;
+
 public class ActivityLoggerHttp implements Port {
     private final Logger logger = LoggerFactory.getLogger(ActivityLoggerHttp.class);
 
@@ -20,7 +22,7 @@ public class ActivityLoggerHttp implements Port {
     }
 
     @Override
-    public void run() {
+    public void run(Properties configs) {
         Javalin server = Javalin.create();
 
         server.before(this::logBody);
@@ -32,6 +34,7 @@ public class ActivityLoggerHttp implements Port {
             ActivityLogger.process(input);
         });
 
-        server.start(8080);
+        int port = Integer.parseInt(configs.getProperty("activitylogger.http.port"));
+        server.start(port);
     }
 }

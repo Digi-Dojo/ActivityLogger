@@ -29,9 +29,17 @@ public class ActivityLoggerHttp implements Port {
         server.after(this::logResponse);
 
         server.post("/input", ctx -> {
-            Input input = ctx.bodyAsClass(Input.class);
+            try {
+                Input input = ctx.bodyAsClass(Input.class);
 
-            ActivityLogger.process(input);
+                if (input.isValid())
+                    throw new RuntimeException();
+
+                ActivityLogger.process(input);
+            } catch (Exception re) {
+                ctx.result("{'error':'Invalid input structure'");
+                ctx.status(400);
+            }
         });
 
         int port = Integer.parseInt(configs.getProperty("activitylogger.http.port"));

@@ -13,11 +13,11 @@ USER gradle
 CMD gradle build --continuous
 
 # COPY ALL PROJECTS build.gradle.kts FILES TO THEIR DESTINATIONS
-COPY --chown=gradle:gradle  settings.gradle.kts         build.gradle.kts            gradle.properties   ./
-COPY --chown=gradle:gradle  async/build.gradle.kts      async/gradle.properties                         ./async/
-COPY --chown=gradle:gradle  core/build.gradle.kts                                                       ./core/
-COPY --chown=gradle:gradle  http/build.gradle.kts       http/gradle.properties                          ./http/
-COPY --chown=gradle:gradle  inferrers/build.gradle.kts                                                  ./inferrers/
+COPY --chown=gradle:gradle  settings.gradle.kts         build.gradle.kts            ./
+COPY --chown=gradle:gradle  async/build.gradle.kts      async/gradle.properties     ./async/
+COPY --chown=gradle:gradle  core/build.gradle.kts                                   ./core/
+COPY --chown=gradle:gradle  http/build.gradle.kts       http/gradle.properties      ./http/
+COPY --chown=gradle:gradle  inferrers/build.gradle.kts                              ./inferrers/
 
 
 # PRE-INSTALL JUST THE DEPENDENCIES -- THIS SHALL SPEEDUP FUTURE BUILDS

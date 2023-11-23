@@ -1,5 +1,6 @@
 package it.unibz.activitylogger.async.business.consumers;
 
+import it.unibz.activitylogger.async.api.InvalidInputMessageException;
 import it.unibz.activitylogger.core.api.Input;
 import it.unibz.activitylogger.core.main.ActivityLogger;
 
@@ -16,7 +17,11 @@ public class InputConsumer implements Callback {
 
     @Override
     public void run(String message) {
-        Input input = inputParser.from(message);
-        ActivityLogger.process(input);
+        try {
+            Input input = inputParser.from(message);
+            ActivityLogger.process(input);
+        } catch (InvalidInputMessageException iime) {
+            System.out.println(iime.getLocalizedMessage());
+        }
     }
 }

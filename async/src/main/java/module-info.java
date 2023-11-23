@@ -11,4 +11,5 @@ module it.unibz.activitylogger.async {
     requires com.rabbitmq.client;
     requires org.slf4j;
     requires org.slf4j.simple;
+    requires com.google.gson;
 }

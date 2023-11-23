@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  rabbit:
+    image: rabbitmq:3.12-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  activitylogger:
+    build:
+      context: .
+      target: runner
+    depends_on:
+      - rabbit
+    env_file:
+      - .env

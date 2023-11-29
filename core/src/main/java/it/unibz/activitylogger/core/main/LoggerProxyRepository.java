@@ -12,6 +12,7 @@ public class LoggerProxyRepository extends InMemoryLogRecordRepository {
 
     @Override
     public void save(LogRecord logRecord) {
+        System.out.println(logRecord);
         wrapped.save(logRecord);
     }
 }

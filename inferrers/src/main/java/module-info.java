@@ -1,8 +1,6 @@
 import it.unibz.activitylogger.core.api.Inferrer;
-import it.unibz.activitylogger.inferrers.ActionFromHttpVerb;
-import it.unibz.activitylogger.inferrers.ActionInUri;
-import it.unibz.activitylogger.inferrers.ContextNameAndIdFromUri;
-import it.unibz.activitylogger.inferrers.EntityNameFromUri;
+import it.unibz.activitylogger.inferrers.*;
+import it.unibz.activitylogger.inferrers.metadata.*;
 
 module it.unibz.activitylogger.inferrers {
     requires it.unibz.activitylogger.core;
@@ -11,6 +9,7 @@ module it.unibz.activitylogger.inferrers {
             with EntityNameFromUri,
                     ActionFromHttpVerb,
                     ActionInUri,
-                    ContextNameAndIdFromUri
+                    ContextNameAndIdFromUri,
+                    ActionFromMetadata,
             ;
 }

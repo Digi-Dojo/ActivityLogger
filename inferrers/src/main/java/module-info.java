@@ -11,5 +11,6 @@ module it.unibz.activitylogger.inferrers {
                     ActionInUri,
                     ContextNameAndIdFromUri,
                     ActionFromMetadata,
+                    ContextFromMetadata
             ;
 }

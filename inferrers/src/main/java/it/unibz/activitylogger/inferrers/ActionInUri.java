@@ -2,12 +2,14 @@ package it.unibz.activitylogger.inferrers;
 
 import it.unibz.activitylogger.core.api.EditableLogRecord;
 import it.unibz.activitylogger.core.api.InferenceContext;
+import it.unibz.activitylogger.core.api.InferenceTier;
 import it.unibz.activitylogger.core.api.Input;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+@InferenceTier(InferenceTier.Tier.MEDIUM)
 public class ActionInUri extends BaseInferrer {
     @Override
     public void infer(InferenceContext context) {

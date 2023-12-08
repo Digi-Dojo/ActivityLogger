@@ -1,12 +1,10 @@
 package it.unibz.activitylogger.core.main;
 
+import it.unibz.activitylogger.core.api.InferenceTier;
 import it.unibz.activitylogger.core.api.Inferrer;
 import it.unibz.activitylogger.core.business.inferrer.InferrerLoader;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ServiceLoader;
+import java.util.*;
 
 public class AutomaticInferrerLoader implements InferrerLoader {
     @Override
@@ -31,14 +29,49 @@ public class AutomaticInferrerLoader implements InferrerLoader {
         return inferrers;
     }
 
-    private void link(List<Inferrer> inferrers) {
+    public void link(List<Inferrer> inferrers) {
+        ArrayList<Inferrer> innerInferrers = new ArrayList<>(inferrers);
+        innerInferrers.sort(comparatorByTier());
+
         int first = 0;
-        int last = inferrers.size() - 2;
+        int last = innerInferrers.size() - 2;
 
         for (int i = first; i <= last; i++) {
-            Inferrer current = inferrers.get(i);
-            Inferrer next = inferrers.get(i + 1);
+            Inferrer current = innerInferrers.get(i);
+            Inferrer next = innerInferrers.get(i + 1);
             current.setNext(next);
         }
+    }
+
+    private Comparator<Inferrer> comparatorByTier() {
+        return (infOne, infTwo) -> {
+            Map<InferenceTier.Tier, Integer> mapper = tierMapper();
+
+            InferenceTier.Tier tierOne = getTier(infOne);
+
+            InferenceTier.Tier tierTwo = getTier(infTwo);
+
+
+            return mapper.get(tierOne) - mapper.get(tierTwo);
+        };
+    }
+
+    private Map<InferenceTier.Tier, Integer> tierMapper() {
+        return Map.of(
+                InferenceTier.Tier.LOW, 1,
+                InferenceTier.Tier.MEDIUM, 2,
+                InferenceTier.Tier.HIGH, 3
+        );
+    }
+
+    private InferenceTier.Tier getTier(Inferrer infTwo) {
+        InferenceTier annotation = infTwo
+                .getClass()
+                .getAnnotation(InferenceTier.class);
+
+        if (annotation != null)
+            return annotation.value();
+
+        return InferenceTier.Tier.LOW;
     }
 }

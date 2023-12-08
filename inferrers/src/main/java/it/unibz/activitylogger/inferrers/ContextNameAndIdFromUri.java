@@ -2,10 +2,12 @@ package it.unibz.activitylogger.inferrers;
 
 import it.unibz.activitylogger.core.api.EditableLogRecord;
 import it.unibz.activitylogger.core.api.InferenceContext;
+import it.unibz.activitylogger.core.api.InferenceTier;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@InferenceTier(InferenceTier.Tier.MEDIUM)
 public class ContextNameAndIdFromUri extends BaseInferrer {
     @Override
     public void infer(InferenceContext context) {

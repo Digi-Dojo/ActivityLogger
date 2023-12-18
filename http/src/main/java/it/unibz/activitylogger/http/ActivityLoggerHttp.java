@@ -12,6 +12,7 @@ import java.util.Properties;
 
 public class ActivityLoggerHttp implements Port {
     private final Logger logger = LoggerFactory.getLogger(ActivityLoggerHttp.class);
+    private final ActivityLogger activityLogger = new ActivityLogger();
 
     private void logBody(Context ctx) {
         logger.info(ctx.body());
@@ -35,7 +36,7 @@ public class ActivityLoggerHttp implements Port {
                 if (input.isValid())
                     throw new RuntimeException();
 
-                ActivityLogger.process(input);
+                activityLogger.processInput(input);
             } catch (Exception re) {
                 ctx.result("{'error':'Invalid input structure'");
                 ctx.status(400);

@@ -1,7 +1,7 @@
 package it.unibz.activitylogger.core.business.utils;
 
 import it.unibz.activitylogger.core.api.LogRecord;
-import it.unibz.activitylogger.core.business.LogRecordSaver;
+import it.unibz.activitylogger.core.api.LogRecordSaver;
 
 public class ParameterCatcher implements LogRecordSaver {
     private LogRecord given = null;

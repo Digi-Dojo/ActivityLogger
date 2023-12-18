@@ -2,7 +2,7 @@ package it.unibz.activitylogger.core.main;
 
 import it.unibz.activitylogger.core.api.InferenceTier;
 import it.unibz.activitylogger.core.api.Inferrer;
-import it.unibz.activitylogger.core.business.inferrer.InferrerLoader;
+import it.unibz.activitylogger.core.api.InferrerLoader;
 
 import java.util.*;
 

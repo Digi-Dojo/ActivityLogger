@@ -1,10 +1,7 @@
 package it.unibz.activitylogger.core.business;
 
-import it.unibz.activitylogger.core.api.Input;
-import it.unibz.activitylogger.core.api.InputProcessor;
-import it.unibz.activitylogger.core.api.InferenceContext;
-import it.unibz.activitylogger.core.api.Inferrer;
-import it.unibz.activitylogger.core.business.inferrer.InferrerLoader;
+import it.unibz.activitylogger.core.api.*;
+import it.unibz.activitylogger.core.api.InferrerLoader;
 
 public class BasicInputProcessor implements InputProcessor {
     private final InferrerLoader inferrerLoader;

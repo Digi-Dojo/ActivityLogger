@@ -2,7 +2,7 @@ package it.unibz.activitylogger.core.business;
 
 import it.unibz.activitylogger.core.api.Input;
 import it.unibz.activitylogger.core.api.LogRecord;
-import it.unibz.activitylogger.core.business.inferrer.InferrerLoader;
+import it.unibz.activitylogger.core.api.InferrerLoader;
 import it.unibz.activitylogger.core.business.utils.MockActionInferrer;
 import it.unibz.activitylogger.core.business.utils.ParameterCatcher;
 import it.unibz.activitylogger.core.business.utils.MockInferrerLoader;

@@ -3,6 +3,7 @@ package it.unibz.activitylogger.http;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import it.unibz.activitylogger.core.api.Input;
+import it.unibz.activitylogger.core.api.LogRecordSaver;
 import it.unibz.activitylogger.core.api.Port;
 import it.unibz.activitylogger.core.main.ActivityLogger;
 import org.slf4j.Logger;
@@ -45,5 +46,10 @@ public class ActivityLoggerHttp implements Port {
 
         int port = Integer.parseInt(configs.getProperty("activitylogger.http.port"));
         server.start(port);
+    }
+
+    @Override
+    public void setLogRecordSaver(LogRecordSaver logRecordSaver) {
+        this.activityLogger.setRecordSaver(logRecordSaver);
     }
 }

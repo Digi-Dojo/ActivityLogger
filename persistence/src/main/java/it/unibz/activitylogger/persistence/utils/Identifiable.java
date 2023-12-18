@@ -1,4 +1,4 @@
-package it.unibz.activitylogger.core.infrastructure;
+package it.unibz.activitylogger.persistence.utils;
 
 public interface Identifiable {
     String getId();

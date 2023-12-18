@@ -4,4 +4,6 @@ import java.util.Properties;
 
 public interface Port {
     void run(Properties configs);
+
+    void setLogRecordSaver(LogRecordSaver logRecordSaver);
 }

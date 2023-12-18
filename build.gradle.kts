@@ -24,6 +24,7 @@ dependencies {
     implementation(project(mapOf("path" to ":inferrers")))
     implementation(project(mapOf("path" to ":http")))
     implementation(project(mapOf("path" to ":async")))
+    implementation(project(mapOf("path" to ":persistence")))
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")

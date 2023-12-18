@@ -1,4 +1,5 @@
 import it.unibz.activitylogger.core.api.Inferrer;
+import it.unibz.activitylogger.core.api.LogRecordSaver;
 import it.unibz.activitylogger.core.api.Port;
 
 module it.unibz.activitylogger.core {
@@ -7,4 +8,5 @@ module it.unibz.activitylogger.core {
 
     uses Inferrer;
     uses Port;
+    uses LogRecordSaver;
 }

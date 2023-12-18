@@ -2,6 +2,7 @@ package it.unibz.activitylogger.async.main;
 
 import it.unibz.activitylogger.async.business.InputParser;
 import it.unibz.activitylogger.async.business.consumers.InputConsumer;
+import it.unibz.activitylogger.core.api.LogRecordSaver;
 import it.unibz.activitylogger.core.api.Port;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,8 @@ import it.unibz.activitylogger.async.infrastructure.RabbitMqConfigurer;
 import java.util.Properties;
 
 public class ActivityLoggerAsync implements Port {
+    private LogRecordSaver logRecordSaver;
+
     @Override
     public void run(Properties config) {
         Logger logger = LoggerFactory.getLogger(ActivityLoggerAsync.class);
@@ -20,7 +23,7 @@ public class ActivityLoggerAsync implements Port {
         String topicName = config.getProperty("activitylogger.async.topic_name");
         String routingKey = topicName;
 
-        InputConsumer inputConsumer = new InputConsumer(new InputParser());
+        InputConsumer inputConsumer = new InputConsumer(new InputParser(), this.logRecordSaver);
 
         RabbitMqConfigurer.create()
                 .connectTo(host)
@@ -30,6 +33,11 @@ public class ActivityLoggerAsync implements Port {
 
 
         publishTest(host, topicName, routingKey, logger);
+    }
+
+    @Override
+    public void setLogRecordSaver(LogRecordSaver logRecordSaver) {
+        this.logRecordSaver = logRecordSaver;
     }
 
     private void publishTest(String host, String topicName, String routingKey, Logger logger) {

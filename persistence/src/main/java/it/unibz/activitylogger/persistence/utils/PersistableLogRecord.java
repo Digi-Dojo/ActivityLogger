@@ -1,4 +1,4 @@
-package it.unibz.activitylogger.core.infrastructure;
+package it.unibz.activitylogger.persistence.utils;
 
 import it.unibz.activitylogger.core.api.LogRecord;
 
